@@ -1,26 +1,27 @@
-PATH=$PATH:~/etc
+PATH=$PATH:~/etc:~/proc
 export PATH
 kernal_name=$(uname -s)
-distroID=$(cat /etc/*release | grep -w ID )
+distro=$(cat /etc/*release | grep -w ID | sed 's/ID=//g' )
+MemTotal=$(cat /proc/meminfo | grep MemTotal | sed 's/MemTotal:       //g' | sed 's/ kB//g')
+MemTotal=$(($MemTotal/1024))
+MemFree=$(cat /proc/meminfo | grep MemFree | sed 's/MemFree:        //g' | sed 's/ kB//g')
+MemFree=$(($MemFree/1024))
+MemUsed=$(($MemTotal-MemFree))
+ram="${MemUsed}/${MemTotal}"
+cpu=$(lscpu | grep "Model name" | sed 's/Model name:            //g')
+uptime=$(uptime -p | sed 's/up //g')
+c1=$(tput setaf 1)
+c2=$(tput setaf 2)
+c3=$(tput setaf 3)
+c4=$(tput setaf 4)
+c5=$(tput setaf 5)
+c6=$(tput setaf 6)
+sb=$(tput bold)
+reset=$(tput sgr0)
 case $kernal_name in
 	"Linux" | "GNU" )
 		os="Linux"
-		#distros are just checking distro id for the distro name
-			case $distroID in  
-			       	*"debian"* )
-					distro="Debian"
-					;;
-				*"ubuntu"* )
-					distro="Ubuntu"
-					;;
-				*"opensuse"* )
-					distro="openSUSE"
-					;;
-				*)
-					distro="Unknown, Please contact me on github for support of your distro"
-					;;
-			esac
-		;;
+		 ;;
 	"CYGWIN"* | "MYSY"* | "MINGW"* )
 		os="Windows"
 		;;
@@ -28,6 +29,8 @@ case $kernal_name in
 		os="Unknown"
 		;;
 esac
-echo "$distroID"
-echo "$os"
-echo "$distro"
+echo "${c1}OS:     ${os}"
+echo "${c1}Distro: ${distro}"
+echo "${c1}Uptime: ${uptime}"
+echo "${c1}CPU:    ${cpu}"
+echo "${c1}RAM:    ${ram}"
