@@ -16,6 +16,7 @@ c3=$(tput setaf 3)
 c4=$(tput setaf 4)
 c5=$(tput setaf 5)
 c6=$(tput setaf 6)
+c6=$(tput setaf 7)
 sb=$(tput bold)
 reset=$(tput sgr0)
 case $kernal_name in
@@ -29,8 +30,8 @@ case $kernal_name in
 		os="Unknown"
 		;;
 esac
-echo "${c1}${sb}OS:     ${reset}${c6}${os}"
-echo "${c1}${sb}Distro: ${reset}${c6}${distro}"
-echo "${c1}${sb}Uptime: ${reset}${c6}${uptime}"
-echo "${c1}${sb}CPU:    ${reset}${c6}${cpu}"
-echo "${c1}${sb}RAM:    ${reset}${c6}${ram}"
+echo "${c1}${sb}OS:     ${reset}${c7}${os}"
+echo "${c1}${sb}Distro: ${reset}${c7}${distro}"
+echo "${c1}${sb}Uptime: ${reset}${c7}=$(tput setaf 6)c6=$(tput setaf 6)}${uptime}"
+echo "${c1}${sb}CPU:    ${reset}${c7}${cpu}"
+echo "${c1}${sb}RAM:    ${reset}${c7}${ram}"
