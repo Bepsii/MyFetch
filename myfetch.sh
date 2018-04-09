@@ -32,6 +32,6 @@ case $kernal_name in
 esac
 echo "${c1}${sb}OS:     ${reset}${c7}${os}"
 echo "${c1}${sb}Distro: ${reset}${c7}${distro}"
-echo "${c1}${sb}Uptime: ${reset}${c7}=$(tput setaf 6)c6=$(tput setaf 6)}${uptime}"
+echo "${c1}${sb}Uptime: ${reset}${c7}${uptime}"
 echo "${c1}${sb}CPU:    ${reset}${c7}${cpu}"
 echo "${c1}${sb}RAM:    ${reset}${c7}${ram}"
