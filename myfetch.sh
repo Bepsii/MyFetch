@@ -29,8 +29,8 @@ case $kernal_name in
 		os="Unknown"
 		;;
 esac
-echo "${c1}OS:     ${os}"
-echo "${c1}Distro: ${distro}"
-echo "${c1}Uptime: ${uptime}"
-echo "${c1}CPU:    ${cpu}"
-echo "${c1}RAM:    ${ram}"
+echo "${c1}${sb}OS:     ${reset}${c6}${os}"
+echo "${c1}${sb}Distro: ${reset}${c6}${distro}"
+echo "${c1}${sb}Uptime: ${reset}${c6}${uptime}"
+echo "${c1}${sb}CPU:    ${reset}${c6}${cpu}"
+echo "${c1}${sb}RAM:    ${reset}${c6}${ram}"
